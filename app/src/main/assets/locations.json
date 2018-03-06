@@ -1,0 +1,211 @@
+{
+  "locations": [
+    {
+      "id": "1",
+      "nama_lembaga": "Adiwidya Course",
+      "alamat": "JL.Pasundan No.45 03/06 Ds. Kota Kulon 44112",
+      "kecamatan": "Garut Kota",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": 107.741971,
+      "longitude": -6.931659
+    },
+    {
+      "id": "2",
+      "nama_lembaga": "Omega",
+      "alamat": "JL.Ahmad Yani No. 5 Ds. Paminggir",
+      "kecamatan": "Garut Kota",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -72196395,
+      "longitude": 1079082307
+    },
+    {
+      "id": "3",
+      "nama_lembaga": "PECS",
+      "alamat": "JL.Cimanuk No. 155",
+      "kecamatan": "Garut Kota",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -7.208182,
+      "longitude": 107.898541
+    },
+    {
+      "id": "4",
+      "nama_lembaga": "ELP Baverly",
+      "alamat": "JL.Cimanuk No. 180",
+      "kecamatan": "Garut Kota",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -72181054,
+      "longitude": 1078977588
+    },
+    {
+      "id": "5",
+      "nama_lembaga": "Darwin Collage",
+      "alamat": "JL.Ahmad Yani No. 9 Ds. Paminggir",
+      "kecamatan": "Garut Kota",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -72168956,
+      "longitude": 1078976458
+    },
+    {
+      "id": "6",
+      "nama_lembaga": "Elva",
+      "alamat": "JL.Gunung Satria No. 10",
+      "kecamatan": "Garut Kota",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -71341372,
+      "longitude": 1078715008
+    },
+    {
+      "id": "7",
+      "nama_lembaga": "KUMON Pasundan Garut",
+      "alamat": "JL.Pasundan No.74 Kel.Kota Kulon ",
+      "kecamatan": "Garut Kota",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -72242069,
+      "longitude": 1079031285
+    },
+    {
+      "id": "8",
+      "nama_lembaga": "Madinah Nami Jaya",
+      "alamat": "JL.Pasar Baru Kadungra No. 17",
+      "kecamatan": "Kadungora",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -7093057,
+      "longitude": 1078937463
+    },
+    {
+      "id": "9",
+      "nama_lembaga": "Voice Of english",
+      "alamat": "Komp. Bumi Malayu Asri Blok O No.14",
+      "kecamatan": "Leles",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -70808078,
+      "longitude": 107886984
+    },
+    {
+      "id": "10",
+      "nama_lembaga": "Muchigae",
+      "alamat": "Kp.Depok Rt.02/Rw.02 Ds. Sirnagalih",
+      "kecamatan": "Bayongbong",
+      "jenis_kursus": "Bahasa Korea",
+      "latitude": -7260649,
+      "longitude": 1078551719
+    },
+    {
+      "id": "11",
+      "nama_lembaga": "JCB",
+      "alamat": "JL.Raya Bayongbong Km.5 Ds. Mangkurakyat",
+      "kecamatan": "Cilawu",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -72473734,
+      "longitude": 1078803607
+    },
+    {
+      "id": "12",
+      "nama_lembaga": "Sinar Course",
+      "alamat": "JL",
+      "kecamatan": "Raya Cisompet Kode pos 4417",
+      "jenis_kursus": "Cisompet",
+      "latitude": -75668237,
+      "longitude": -75668237
+    },
+    {
+      "id": "13",
+      "nama_lembaga": "Giga College",
+      "alamat": "JL",
+      "kecamatan": "Raya Cisompet Kode Pameeungpeuk",
+      "jenis_kursus": "Cisompet",
+      "latitude": -75539688,
+      "longitude": -75539688
+    },
+    {
+      "id": "15",
+      "nama_lembaga": "Madani",
+      "alamat": "JL.Ngamplang Rt 01/ Rw 01",
+      "kecamatan": "Cikajang",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -72480568,
+      "longitude": 1079077204
+    },
+    {
+      "id": "16",
+      "nama_lembaga": "Mulya Bakti Computer",
+      "alamat": "JL.Cibiuk No. 3",
+      "kecamatan": "Cibiuk",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -7080813,
+      "longitude": 1079548363
+    },
+    {
+      "id": "17",
+      "nama_lembaga": "Darussalam English Course",
+      "alamat": "Kp. Sindang Sari Ds.kersamanah",
+      "kecamatan": "Kersamanah",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -70476482,
+      "longitude": 1080343901
+    },
+    {
+      "id": "18",
+      "nama_lembaga": "CMI",
+      "alamat": "JL.Merdeka No. 38 Rt/Rw 04.02",
+      "kecamatan": "Tarogong Kidul",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -71335958,
+      "longitude": 1079036769
+    },
+    {
+      "id": "19",
+      "nama_lembaga": "ICB Panji Pananjung",
+      "alamat": "JL.Merdeka No. 138 jayaraga",
+      "kecamatan": "Tarogong Kidul",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -7198301,
+      "longitude": 1078819753
+    },
+    {
+      "id": "20",
+      "nama_lembaga": "Bina Informatika Computare (BIC) ",
+      "alamat": "JL.Merdeka No. 111",
+      "kecamatan": "Tarogong Kidul",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -71900638,
+      "longitude": 107900255
+    },
+    {
+      "id": "21",
+      "nama_lembaga": "G-Root English Corner(GEC)",
+      "alamat": "JL.Pahlawan No.12 Ds.Sukagalih",
+      "kecamatan": "Tarogong Kidul",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -72039811,
+      "longitude": 1079012738
+    },
+    {
+      "id": "22",
+      "nama_lembaga": "Boston Collage",
+      "alamat": "JL.Patriot Dalam 1 No.41 Ds",
+      "kecamatan": "Sukagalih",
+      "jenis_kursus": "Tarogong Kidul",
+      "latitude": -7203183,
+      "longitude": 1078855488
+    },
+    {
+      "id": "23",
+      "nama_lembaga": "LKP Yasa Anggana",
+      "alamat": "Jl. Otista No. 278 A Kab. Garut",
+      "kecamatan": "Tarogong Kidul",
+      "jenis_kursus": "Bahasa Inggriss",
+      "latitude": -7203306,
+      "longitude": 1078868953
+    },
+    {
+      "id": "24",
+      "nama_lembaga": "KUMON Suherman",
+      "alamat": "JL.Suherman No.44 Ds.Ciateul",
+      "kecamatan": "Tarogong Kidul",
+      "jenis_kursus": "Bahasa",
+      "latitude": -72085535,
+      "longitude": 1078999034
+    }
+  ]
+}
