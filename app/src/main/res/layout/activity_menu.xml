@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical"
     tools:context="id.bimbel.MenuActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <RelativeLayout
+            android:id="@+id/btn_list_bimbel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="#00BCD4"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:gravity="center"
-            android:onClick="clickLokasi">
+            android:clickable="true"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/img"
@@ -27,25 +29,65 @@
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:padding="5dp"
-                android:src="@drawable/gas" />
+                android:src="@drawable/ic_view_list_black_24dp"
+                android:tint="@android:color/white" />
 
             <TextView
-                android:textColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="LOKASI BIMBEL" />
+                android:text="LIST BIMBEL"
+                android:textColor="@android:color/white" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:background="#8BC34A"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:gravity="center"
-            android:onClick="tentangClick">
+            android:id="@+id/btn_maps"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFCA28"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:padding="5dp"
+                android:src="@drawable/ic_map_black_24dp"
+                android:tint="@android:color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="MAPS"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:id="@+id/btn_terdekat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FF7043"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/img2"
@@ -53,25 +95,27 @@
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:padding="5dp"
-                android:src="@drawable/gas" />
+                android:src="@drawable/ic_gps_fixed_black_24dp"
+                android:tint="@android:color/white" />
 
             <TextView
-                android:textColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img2"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="TENTANG" />
+                android:text="LOKASI TERDEKAT"
+                android:textColor="@android:color/white" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:background="#FF9800"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:gravity="center"
-            android:onClick="exitClick">
+            android:id="@+id/btn_cari"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#7E57C2"
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/img3"
@@ -79,19 +123,87 @@
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:padding="5dp"
-                android:src="@drawable/gas" />
+                android:src="@drawable/ic_search_black_24dp"
+                android:tint="@android:color/white" />
 
             <TextView
-                android:textColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/img3"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="EXIT" />
+                android:text="CARI"
+                android:textColor="@android:color/white" />
 
         </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/btn_tentang"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#8BC34A"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:padding="5dp"
+                android:src="@drawable/ic_account_circle_black_24dp"
+                android:tint="@android:color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img2"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="TENTANG"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_exit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FF9800"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:padding="5dp"
+                android:src="@drawable/ic_exit_to_app_black_24dp"
+                android:tint="@android:color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img3"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="EXIT"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+
     </LinearLayout>
 
 
-</ScrollView>
+</LinearLayout>

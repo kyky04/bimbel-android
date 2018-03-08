@@ -1,8 +1,9 @@
 package id.bimbel.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Bimbel{
+public class Bimbel implements Serializable {
 	private List<LocationItem> location;
 
 	public void setLocation(List<LocationItem> location){

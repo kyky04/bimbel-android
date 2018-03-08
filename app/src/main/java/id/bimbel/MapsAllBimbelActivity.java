@@ -26,7 +26,7 @@ public class MapsAllBimbelActivity extends FragmentActivity implements OnMapRead
     private Marker myMarker;
     Pom pom;
     ArrayList<Pom> listPom;
-    HashMap<String,String> hashMap;
+    HashMap<String, String> hashMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +61,13 @@ public class MapsAllBimbelActivity extends FragmentActivity implements OnMapRead
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-6.8188660, 107.1472870);
         for (int i = 0; i < listPom.size(); i++) {
-            myMarker = mMap.addMarker(new MarkerOptions().position(new LatLng(listPom.get(i).getLatitude(), listPom.get(i).getLongitude()   )).title(listPom.get(i).getName()));
+            myMarker = mMap.addMarker(new MarkerOptions().position(new LatLng(listPom.get(i).getLatitude(), listPom.get(i).getLongitude())).title(listPom.get(i).getName()));
         }
+
+
 //        mMap.addMarker(new MarkerOptions().position(new LatLng(-6.8110100, 107.1491040)).snippet("Garut").title("Jln. Soeta"));
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(
-                sydney).zoom(14).build();
 
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         mMap.setOnInfoWindowClickListener(this);
     }
 

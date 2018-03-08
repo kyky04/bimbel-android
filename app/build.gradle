@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 25
     buildToolsVersion '26.0.2'
@@ -40,4 +41,6 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
     implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.karumi:dexter:4.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

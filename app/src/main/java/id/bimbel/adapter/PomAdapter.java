@@ -45,7 +45,7 @@ public class PomAdapter extends RecyclerView.Adapter<PomAdapter.MyViewHolder> {
     public void onBindViewHolder(PomAdapter.MyViewHolder holder, int position) {
         holder.tvPom.setText(pomList.get(position).getName());
         holder.tvPomDistance.setText(String.valueOf(getDistance(myLocLat,myLocLong,pomList.get(position).getLatitude(),pomList.get(position).getLongitude())/1000)+" Km");
-//        Glide.with(context).load(pomList.get(position).getUrl()).into(holder.imgPom);
+//        Glide.with(context).load(bimbel.get(position).getUrl()).into(holder.imgPom);
         Picasso.with(context).load(pomList.get(position).getUrl()).resize(80,80).into(holder.imgPom);
     }
 

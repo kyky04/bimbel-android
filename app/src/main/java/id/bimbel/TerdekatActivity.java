@@ -40,7 +40,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MainActivity extends AppCompatActivity {
+public class TerdekatActivity extends AppCompatActivity {
 
     List<Pom> listPom;
 
@@ -56,21 +56,17 @@ public class MainActivity extends AppCompatActivity {
     List<DataItem> list;
     BimbelAdapter adapter;
 
+    double latitude, longitude;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_terdekat);
         ButterKnife.bind(this);
-
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerBimbel);
-        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);
-
         gpsTracker = new GPSTracker(this);
         if (gpsTracker.canGetLocation()) {
-
-            double latitude = gpsTracker.getLatitude();
-            double longitude = gpsTracker.getLongitude();
-
+            latitude = gpsTracker.getLatitude();
+            longitude = gpsTracker.getLongitude();
             // \n is for new line
             Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
         } else {
@@ -107,8 +103,11 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(response.body().getData().get(i));
                     }
-                    adapter = new BimbelAdapter(MainActivity.this, list);
+
+                    sortLocations(list, latitude, longitude);
+                    adapter = new BimbelAdapter(TerdekatActivity.this, list);
                     recyclerView.setAdapter(adapter);
+
                 }
             }
 
@@ -144,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openDialog() {
-        dialog = ProgressDialog.show(this, "Fetching Data Pom Mini", "Please wait...", false, false);
+        dialog = ProgressDialog.show(this, "Fetching Data ", "Please wait...", false, false);
     }
 
     public static float getDistance(double startLati, double startLongi, double goalLati, double goalLongi) {
@@ -153,10 +152,10 @@ public class MainActivity extends AppCompatActivity {
         return resultArray[0];
     }
 
-    public static List<LocationItem> sortLocations(List<LocationItem> locations, final double myLatitude, final double myLongitude) {
-        Comparator comp = new Comparator<LocationItem>() {
+    public static List<DataItem> sortLocations(List<DataItem> locations, final double myLatitude, final double myLongitude) {
+        Comparator comp = new Comparator<DataItem>() {
             @Override
-            public int compare(LocationItem o, LocationItem o2) {
+            public int compare(DataItem o, DataItem o2) {
                 float[] result1 = new float[3];
                 Location.distanceBetween(myLatitude, myLongitude, o.getLatitude(), o.getLongitude(), result1);
                 Float distance1 = result1[0];

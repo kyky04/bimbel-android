@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide;
 
 import id.bimbel.model.Pom;
 import id.bimbel.utils.ApiClient;
-import id.bimbel.utils.BimbelApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,20 +29,20 @@ public class DetailFromAllActivity extends AppCompatActivity {
 
 
         Retrofit mRetrofit = ApiClient.newInstance();
-        BimbelApi pomService = mRetrofit.create(BimbelApi.class);
-        pomService.getPom(namePom).enqueue(new Callback<Pom>() {
-            @Override
-            public void onResponse(Call<Pom> call, Response<Pom> response) {
-                if(response.code() == 200){
-                    tvDetail.setText("Alamat : "+response.body().getName());
-                    Glide.with(DetailFromAllActivity.this).load(response.body().getUrl()).into(imgDetailPom);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Pom> call, Throwable t) {
-
-            }
-        });
+//        BimbelApi pomService = mRetrofit.create(BimbelApi.class);
+//        pomService.getPom(namePom).enqueue(new Callback<Pom>() {
+//            @Override
+//            public void onResponse(Call<Pom> call, Response<Pom> response) {
+//                if(response.code() == 200){
+//                    tvDetail.setText("Alamat : "+response.body().getName());
+//                    Glide.with(DetailFromAllActivity.this).load(response.body().getUrl()).into(imgDetailPom);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Pom> call, Throwable t) {
+//
+//            }
+//        });
     }
 }

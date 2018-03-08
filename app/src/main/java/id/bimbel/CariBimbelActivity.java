@@ -9,9 +9,12 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -40,7 +43,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MainActivity extends AppCompatActivity {
+public class CariBimbelActivity extends AppCompatActivity {
 
     List<Pom> listPom;
 
@@ -55,16 +58,14 @@ public class MainActivity extends AppCompatActivity {
 
     List<DataItem> list;
     BimbelAdapter adapter;
+    @BindView(R.id.cari)
+    EditText cari;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_cari);
         ButterKnife.bind(this);
-
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerBimbel);
-        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);
-
         gpsTracker = new GPSTracker(this);
         if (gpsTracker.canGetLocation()) {
 
@@ -94,26 +95,47 @@ public class MainActivity extends AppCompatActivity {
 
         getAllKursus();
 
+        cari.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                List<DataItem> tujuanList = filter(list, charSequence.toString());
+                adapter.setFilter(tujuanList);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
     }
 
 
     void getAllKursus() {
+        openDialog();
         Retrofit retrofit = ApiClient.newInstance();
         BimbelApi service = retrofit.create(BimbelApi.class);
         service.getAllBimbel().enqueue(new Callback<BimbelResponse>() {
             @Override
             public void onResponse(Call<BimbelResponse> call, Response<BimbelResponse> response) {
+                closeDialog();
                 if (response.isSuccessful()) {
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(response.body().getData().get(i));
                     }
-                    adapter = new BimbelAdapter(MainActivity.this, list);
+                    adapter = new BimbelAdapter(CariBimbelActivity.this, list);
                     recyclerView.setAdapter(adapter);
                 }
             }
 
             @Override
             public void onFailure(Call<BimbelResponse> call, Throwable t) {
+                closeDialog();
 
             }
         });
@@ -144,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openDialog() {
-        dialog = ProgressDialog.show(this, "Fetching Data Pom Mini", "Please wait...", false, false);
+        dialog = ProgressDialog.show(this, "Fetching Data Bimbel", "Please wait...", false, false);
     }
 
     public static float getDistance(double startLati, double startLongi, double goalLati, double goalLongi) {
@@ -209,5 +231,17 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return locList;
+    }
+
+    public List<DataItem> filter(List<DataItem> itemRs, String query) {
+        query = query.toLowerCase();
+        List<DataItem> tujuanList = new ArrayList<>();
+        for (DataItem t : itemRs) {
+            String text = t.getNama().toLowerCase();
+            if (text.contains(query)) {
+                tujuanList.add(t);
+            }
+        }
+        return tujuanList;
     }
 }

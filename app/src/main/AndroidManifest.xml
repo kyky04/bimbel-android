@@ -36,6 +36,10 @@
         <activity android:name="id.bimbel.MainActivity"></activity>
         <activity android:name="id.bimbel.MapsAllBimbelActivity"></activity>
         <activity android:name="id.bimbel.DetailFromAllActivity"></activity>
+        <activity android:name="id.bimbel.CariBimbelActivity"></activity>
+        <activity android:name="id.bimbel.TerdekatActivity"></activity>
+        <activity android:name="id.bimbel.MapsDetailActivity"></activity>
+
     </application>
 
 </manifest>

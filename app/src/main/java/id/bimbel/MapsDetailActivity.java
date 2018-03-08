@@ -1,23 +1,19 @@
 package id.bimbel;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +21,6 @@ import java.util.List;
 import id.bimbel.adapter.BimbelAdapter;
 import id.bimbel.model.BimbelResponse;
 import id.bimbel.model.DataItem;
-import id.bimbel.model.LocationItem;
 import id.bimbel.service.BimbelApi;
 import id.bimbel.utils.ApiClient;
 import retrofit2.Call;
@@ -33,7 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
+public class MapsDetailActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
 
     private GoogleMap mMap;
     private Marker myMarker;
@@ -44,6 +39,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     Double myLat, myLong;
 
+    String nama,alamat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +49,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         myLong = getIntent().getDoubleExtra("long", 0);
         myLat = getIntent().getDoubleExtra("lat", 0);
 
+        nama = getIntent().getStringExtra("nama");
+        alamat = getIntent().getStringExtra("alamat");
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         list = new ArrayList<>();
-        getAllKursus();
+//        getAllKursus();
     }
 
 
@@ -76,6 +75,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         }
 
+        mMap.addMarker(new MarkerOptions().position(new LatLng(myLat, myLong)).snippet(alamat).title(nama));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myLat, myLong), 10));
 
         mMap.setOnInfoWindowClickListener(this);
 
@@ -114,7 +115,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     }
 
                     for (int i = 0; i < list.size(); i++) {
-                        mMap.addMarker(new MarkerOptions().position(new LatLng(list.get(i).getLatitude(), list.get(i).getLongitude())).snippet(list.get(i).getAlamat()).title(list.get(i).getNama()));
+
                     }
 
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(list.get(1).getLatitude(), list.get(1).getLongitude()), 10));

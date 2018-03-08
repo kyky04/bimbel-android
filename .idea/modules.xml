@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PomMini.iml" filepath="$PROJECT_DIR$/PomMini.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pom-mini.iml" filepath="$PROJECT_DIR$/pom-mini.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bimbel.iml" filepath="$PROJECT_DIR$/bimbel.iml" />
     </modules>
   </component>
 </project>
