@@ -36,8 +36,7 @@ public class MenuActivity extends AppCompatActivity {
     RelativeLayout btnTentang;
     @BindView(R.id.btn_exit)
     RelativeLayout btnExit;
-    @BindView(R.id.btn)
-    Button btn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,6 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         ButterKnife.bind(this);
 
-        btn = (Button) findViewById(R.id.btn);
         btnListBimbel = (RelativeLayout) findViewById(R.id.btn_list_bimbel);
         btnMaps = (RelativeLayout) findViewById(R.id.btn_maps);
         btnExit = (RelativeLayout) findViewById(R.id.btn_exit);
@@ -146,8 +144,4 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick(R.id.btn)
-    public void onViewClicked() {
-
-    }
 }
