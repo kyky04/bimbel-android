@@ -6,5 +6,5 @@ package id.bimbel.service;
 
 public class AppContans {
     public static final String PESERTA_ID = "peserta_id";
-    public static final String URL = "http://192.168.1.13/bimbel-web/public/api/";
+    public static final String URL = "http://192.168.0.135/bimbel/public/api/";
 }

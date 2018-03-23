@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bimbel Finder Garut</string>
+    <string name="app_name">Kursusku Garut</string>
     <string name="title_activity_maps">Map</string>
 
     <dimen name="profile_picture_border">3dp</dimen>

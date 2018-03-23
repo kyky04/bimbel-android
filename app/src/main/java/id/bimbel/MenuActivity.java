@@ -122,7 +122,7 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(new Intent(this, CariBimbelActivity.class));
                 break;
             case R.id.btn_tentang:
-//                startActivity(new Intent(this,MainActivity.class));
+                startActivity(new Intent(this,TentangActivity.class));
                 break;
             case R.id.btn_exit:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this)

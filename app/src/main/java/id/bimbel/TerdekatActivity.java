@@ -23,15 +23,19 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.bimbel.adapter.BimbelAdapter;
 import id.bimbel.model.BimbelResponse;
 import id.bimbel.model.DataItem;
+import id.bimbel.model.Edge;
 import id.bimbel.model.LocationItem;
-import id.bimbel.model.Pom;
+import id.bimbel.model.Node;
 import id.bimbel.service.BimbelApi;
 import id.bimbel.utils.ApiClient;
 import id.bimbel.utils.GPSTracker;
@@ -41,8 +45,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class TerdekatActivity extends AppCompatActivity {
-
-    List<Pom> listPom;
 
     Dialog dialog;
     GPSTracker gpsTracker;
@@ -57,6 +59,8 @@ public class TerdekatActivity extends AppCompatActivity {
     BimbelAdapter adapter;
 
     double latitude, longitude;
+
+    Node source,goal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,11 +106,22 @@ public class TerdekatActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         list.add(response.body().getData().get(i));
+                        list.get(i).setDistance(getDistance(gpsTracker.getLatitude(),gpsTracker.getLongitude(),response.body().getData().get(i).getLatitude(),response.body().getData().get(i).getLongitude()));
                     }
 
-                    sortLocations(list, latitude, longitude);
+                    Collections.sort(list, new Comparator<DataItem>() {
+                        @Override
+                        public int compare(DataItem c1, DataItem c2) {
+
+
+                            return Float.compare(c1.getDistance(), c2.getDistance());
+                        }
+                    });
                     adapter = new BimbelAdapter(TerdekatActivity.this, list);
                     recyclerView.setAdapter(adapter);
+
+                    AstarSearch(source,goal);
+
 
                 }
             }
@@ -118,23 +133,13 @@ public class TerdekatActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
+    public static float getDistance(double startLati, double startLongi, double goalLati, double goalLongi) {
+        float[] resultArray = new float[99];
+        Location.distanceBetween(startLati, startLongi, goalLati, goalLongi, resultArray);
+        return resultArray[0];
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.allpom:
-                Intent i = new Intent(this, MapsAllBimbelActivity.class);
-                i.putExtra("list", (ArrayList) listPom);
-                startActivity(i);
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 
     private void closeDialog() {
         if (dialog.isShowing()) {
@@ -144,12 +149,6 @@ public class TerdekatActivity extends AppCompatActivity {
 
     private void openDialog() {
         dialog = ProgressDialog.show(this, "Fetching Data ", "Please wait...", false, false);
-    }
-
-    public static float getDistance(double startLati, double startLongi, double goalLati, double goalLongi) {
-        float[] resultArray = new float[99];
-        Location.distanceBetween(startLati, startLongi, goalLati, goalLongi, resultArray);
-        return resultArray[0];
     }
 
     public static List<DataItem> sortLocations(List<DataItem> locations, final double myLatitude, final double myLongitude) {
@@ -209,4 +208,71 @@ public class TerdekatActivity extends AppCompatActivity {
         }
         return locList;
     }
+
+    public void AstarSearch(Node source, Node goal) { Set<Node> explored = new HashSet<Node>();
+        PriorityQueue<Node> queue = new PriorityQueue<Node>(20, new Comparator<Node>() {
+
+            public int compare(Node i, Node j) {
+                if (i.f_scores > j.f_scores) {
+                    return 1;
+                } else if (i.f_scores < j.f_scores) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+
+        }
+        );
+
+//cost awal set 0 source.g_scores = 0;
+
+        queue.add(source);
+
+        boolean found = false;
+
+        while ((!queue.isEmpty()) && (!found)) {
+//node yang punya nilai f_score rendah Node current = queue.poll(); explored.add(current);
+
+//ketemu goal
+            if (source.value.equals(goal.value)) {
+                found = true;
+            }
+
+//mengeck setiap jalur pada node saat ini for (Edge e : current.adjacencies) {
+
+            for (Edge e:source.adjacencies) {
+                Node child = e.target;
+                double cost = e.cost;
+                double temp_g_scores = source.g_scores + cost;
+                double temp_f_scores = temp_g_scores + child.h_scores;
+                if ((explored.contains(child)) && (temp_f_scores >= child.f_scores)) {
+                    continue;
+                }
+
+/*jika jalur belum di lewati atau nilai f_score-nya lebih rendah */
+                else if ((!queue.contains(child)) || (temp_f_scores < child.f_scores)) {
+
+                    child.parent = source; child.g_scores = temp_g_scores; child.f_scores = temp_f_scores;
+
+                    if (queue.contains(child)) {
+                        queue.remove(child);
+                    }
+                    queue.add(child);
+                }
+                printPath(goal);
+
+            }
+
+/*jika jalur sudah di lewati dan f_score-nya lebih besar maka, skip*/
+
+        }
+    }
+    public List<Node> printPath(Node target) { List<Node> path = new ArrayList<Node>();
+        for (Node node = target; node != null; node = node.parent) {
+            path.add(node);
+        } Collections.reverse(path); return path;
+    }
+
+
 }

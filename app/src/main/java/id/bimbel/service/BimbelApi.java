@@ -16,7 +16,7 @@ import retrofit2.http.Query;
 
 public interface BimbelApi {
 
-    @GET("kursuses")
+    @GET("kursus")
     Call<BimbelResponse> getAllBimbel();
 
 }

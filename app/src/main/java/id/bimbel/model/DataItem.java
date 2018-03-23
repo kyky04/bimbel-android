@@ -32,6 +32,16 @@ public class DataItem implements Serializable {
 	@SerializedName("longitude")
 	private double longitude;
 
+	private float distance;
+
+	public float getDistance() {
+		return distance;
+	}
+
+	public void setDistance(float distance) {
+		this.distance = distance;
+	}
+
 	public void setNama(String nama){
 		this.nama = nama;
 	}

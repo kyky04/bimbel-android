@@ -2,7 +2,6 @@ package id.bimbel;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,8 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -34,7 +31,6 @@ import id.bimbel.adapter.BimbelAdapter;
 import id.bimbel.model.BimbelResponse;
 import id.bimbel.model.DataItem;
 import id.bimbel.model.LocationItem;
-import id.bimbel.model.Pom;
 import id.bimbel.service.BimbelApi;
 import id.bimbel.utils.ApiClient;
 import id.bimbel.utils.GPSTracker;
@@ -45,7 +41,6 @@ import retrofit2.Retrofit;
 
 public class CariBimbelActivity extends AppCompatActivity {
 
-    List<Pom> listPom;
 
     Dialog dialog;
     GPSTracker gpsTracker;
@@ -139,24 +134,6 @@ public class CariBimbelActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.allpom:
-                Intent i = new Intent(this, MapsAllBimbelActivity.class);
-                i.putExtra("list", (ArrayList) listPom);
-                startActivity(i);
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void closeDialog() {

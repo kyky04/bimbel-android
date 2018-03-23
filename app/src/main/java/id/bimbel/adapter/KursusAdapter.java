@@ -104,7 +104,7 @@ public class KursusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             ((OriginalViewHolder) holder).tvNamaBimbel.setText(locationItems.get(position).getNamaLembaga());
             ((OriginalViewHolder) holder).tvAlamatBimbel.setText(locationItems.get(position).getAlamat());
 //            ((OriginalViewHolder) holder).tvKecamatan.setText(locationItems.get(position).getKecamatan());
-            ((OriginalViewHolder) holder).tvDistance.setText(String.valueOf(getDistance(myLocLat, myLocLong,locationItems.get(position).getLatitude(), locationItems.get(position).getLongitude()) / 1000) + " Km");
+            ((OriginalViewHolder) holder).tvDistance.setText(String.valueOf((int)getDistance(myLocLat, myLocLong,locationItems.get(position).getLatitude(), locationItems.get(position).getLongitude()) / 1000) + " Km");
 
 
 

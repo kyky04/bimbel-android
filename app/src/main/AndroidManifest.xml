@@ -17,13 +17,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="id.bimbel.MenuActivity"
+            android:name=".MenuActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,15 +30,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="id.bimbel.MapsActivity" />
-        <activity android:name="id.bimbel.DetailBimbelActivity" />
-        <activity android:name="id.bimbel.MainActivity"></activity>
-        <activity android:name="id.bimbel.MapsAllBimbelActivity"></activity>
-        <activity android:name="id.bimbel.DetailFromAllActivity"></activity>
-        <activity android:name="id.bimbel.CariBimbelActivity"></activity>
-        <activity android:name="id.bimbel.TerdekatActivity"></activity>
-        <activity android:name="id.bimbel.MapsDetailActivity"></activity>
-
+        <activity android:name=".MapsActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".CariBimbelActivity" />
+        <activity android:name=".TerdekatActivity" />
+        <activity android:name=".MapsDetailActivity" />
+        <activity android:name=".TentangActivity"></activity>
     </application>
 
 </manifest>
